@@ -5,10 +5,11 @@ $(function() {
 	// toggle scroll to top & search focus
 	var current_position;
 	var jumped = false;
-	Mousetrap.bind(hks_config.key_search, function() {
+	Mousetrap.bind(hks_config.key_search, function(e) {
 		if(!jumped) {
 			current_position = $(document).scrollTop();
 			$(document).scrollTop(0);
+			e.preventDefault();
 			$('#ProcessPageSearchQuery').focus();
 			jumped = true;
 		} else {
