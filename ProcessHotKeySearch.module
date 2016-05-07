@@ -22,7 +22,7 @@ class ProcessHotKeySearch extends WireData implements Module, ConfigurableModule
 
 		return array(
 			'title' => 'Hot Key Search',
-			'version' => 2,
+			'version' => 3,
 			'summary' => 'Adds configurable hot keys for easier use of the admin search via the keyboard.',
 			'singular' => true,
 			'autoload' => 'admin'
