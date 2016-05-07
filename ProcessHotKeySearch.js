@@ -1,4 +1,4 @@
-var hks_config = config.HotKeySearch;
+var hks_config = config.ProcessHotKeySearch;
 
 $(function() {
 
@@ -19,7 +19,7 @@ $(function() {
 
 	// trigger focused search result link
 	var search_input = document.getElementById("ProcessPageSearchQuery");
-	Mousetrap(search_input).bind(hks_config.key_trigger, function() {
+	Mousetrap(search_input).bind(hks_config.key_trigger, function(e) {
 		var focused_href = $('#ProcessPageSearchAutocomplete a.ui-state-focus').attr('href');
 		if(focused_href) {
 			window.location.href = focused_href;
