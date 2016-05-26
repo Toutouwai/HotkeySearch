@@ -1,4 +1,4 @@
-HotKeySearch
+HotkeySearch
 ============
 
 ProcessWire module that adds configurable hot keys for easier use of the admin search via the keyboard. Uses [Mousetrap](https://craig.is/killing/mice) for key bindings.

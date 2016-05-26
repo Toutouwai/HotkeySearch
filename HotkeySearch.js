@@ -1,4 +1,4 @@
-var hks_config = config.ProcessHotKeySearch;
+var hks_config = config.HotkeySearch;
 
 $(function() {
 

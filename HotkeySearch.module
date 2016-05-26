@@ -1,0 +1,66 @@
+<?php
+
+/**
+ *
+ * Hot Key Search
+ *
+ * @author Robin Sallis
+ *
+ * @credits Based largely on AdminHotKeys by "Soma" Philipp Urlich
+ *
+ * ProcessWire 2.x
+ * Copyright (C) 2014 by Ryan Cramer
+ * Licensed under GNU/GPL v2, see LICENSE.TXT
+ *
+ * http://processwire.com
+ *
+ */
+
+class HotkeySearch extends WireData implements Module, ConfigurableModule {
+
+	/**
+	 * Module information
+	 *
+	 */
+	public static function getModuleInfo() {
+		return array(
+			'title' => 'Hot Key Search',
+			'version' => 5,
+			'summary' => 'Adds configurable hot keys for easier use of the admin search via the keyboard.',
+			'singular' => true,
+			'autoload' => "template=admin",
+		);
+	}
+
+	/**
+	 * Initialise
+	 *
+	 * @access public
+	 *
+	 */
+	public function init() {
+		// add js config to admin output
+		$settings = array();
+		$settings['key_search'] = $this->key_search;
+		$settings['key_trigger'] = $this->key_trigger;
+		$this->config->js($this->className(), $settings);
+		// add hook to add scripts
+		$this->addHookAfter('ProcessController::execute', $this, 'addHksScripts');
+	}
+
+	/**
+	 * Add Javascript files
+	 *
+	 * @access public
+	 *
+	 */
+	public function addHksScripts(HookEvent $event) {
+		// if on login no need to go further
+		if($this->process == 'ProcessLogin') return;
+		$info = $this->getModuleInfo();
+		$version = (int) $info['version'];
+		$this->config->scripts->add($this->config->urls->HotkeySearch . "mousetrap.min.js?v={$version}");
+		$this->config->scripts->add($this->config->urls->HotkeySearch . "HotkeySearch.js?v={$version}");
+	}
+
+}
