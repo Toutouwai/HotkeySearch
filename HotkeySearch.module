@@ -25,7 +25,7 @@ class HotkeySearch extends WireData implements Module, ConfigurableModule {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Hot Key Search',
-			'version' => 5,
+			'version' => 7,
 			'summary' => 'Adds configurable hot keys for easier use of the admin search via the keyboard.',
 			'singular' => true,
 			'autoload' => "template=admin",
@@ -43,6 +43,7 @@ class HotkeySearch extends WireData implements Module, ConfigurableModule {
 		$settings = array();
 		$settings['key_search'] = $this->key_search;
 		$settings['key_trigger'] = $this->key_trigger;
+		$settings['key_tree'] = $this->key_tree;
 		$this->config->js($this->className(), $settings);
 		// add hook to add scripts
 		$this->addHookAfter('ProcessController::execute', $this, 'addHksScripts');

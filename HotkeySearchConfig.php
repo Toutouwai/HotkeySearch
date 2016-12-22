@@ -5,6 +5,7 @@ class HotkeySearchConfig extends ModuleConfig {
 		return array(
 			'key_search' => 's',
 			'key_trigger' => 'enter',
+			'key_tree' => 't',
 		);
 	}
 	public function getInputfields() {
@@ -13,25 +14,31 @@ class HotkeySearchConfig extends ModuleConfig {
 
 		$f = $modules->get('InputfieldMarkup');
 		$f->attr('name', 'info');
-		$f->label = 'Info';
-		$markup = "
-		<p>This module uses Mousetrap for key bindings. See the <a href='https://craig.is/killing/mice' target='_blank'>documentation</a> for supported keys.</p>
-		";
+		$f->label = $this->_('Info');
+		$this->_('');
+		$markup = $this->_('<p>This module uses Mousetrap for key bindings. See the <a href="https://craig.is/killing/mice" target="_blank">documentation</a> for supported keys.</p>');
 		$f->attr('value', $markup);
 		$inputfields->add($f);
 
 		$f = $modules->get('InputfieldText');
 		$f->attr('name', 'key_search');
 		$f->attr('size', 15);
-		$f->label = 'Search';
-		$f->description = 'Hot key to toggle scroll/focus to search.';
+		$f->label = $this->_('Search');
+		$f->description = $this->_('Hot key to toggle scroll/focus to search.');
 		$inputfields->add($f);
 
 		$f = $modules->get('InputfieldText');
 		$f->attr('name', 'key_trigger');
 		$f->attr('size', 15);
-		$f->label = "Trigger result";
-		$f->description = "Hot key to trigger link of focused search result.";
+		$f->label = $this->_('Trigger result');
+		$f->description = $this->_('Hot key to trigger link of focused search result.');
+		$inputfields->add($f);
+
+		$f = $modules->get('InputfieldText');
+		$f->attr('name', 'key_tree');
+		$f->attr('size', 15);
+		$f->label = $this->_('Toggle "quick tree"');
+		$f->description = $this->_('Hot key to toggle "quick tree" panel.');
 		$inputfields->add($f);
 
 		return $inputfields;
