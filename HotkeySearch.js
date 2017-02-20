@@ -18,15 +18,6 @@ $(function() {
 		}
 	});
 
-	// Trigger focused search result link
-	var $search_input = $("#ProcessPageSearchQuery")[0];
-	Mousetrap($search_input).bind(hks_config.key_trigger, function() {
-		var $focused_link = $('#ProcessPageSearchAutocomplete a.ui-state-focus');
-		if($focused_link.length) {
-			$focused_link[0].click();
-		}
-	});
-
 	// Toggle quick tree
 	var $tree_button = $("a[data-tab-text='Tree']");
 	if($tree_button.length) {

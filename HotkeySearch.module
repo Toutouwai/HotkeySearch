@@ -25,7 +25,7 @@ class HotkeySearch extends WireData implements Module, ConfigurableModule {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Hot Key Search',
-			'version' => 7,
+			'version' => 8,
 			'summary' => 'Adds configurable hot keys for easier use of the admin search via the keyboard.',
 			'singular' => true,
 			'autoload' => "template=admin",

@@ -4,7 +4,6 @@ class HotkeySearchConfig extends ModuleConfig {
 	public function getDefaults() {
 		return array(
 			'key_search' => 's',
-			'key_trigger' => 'enter',
 			'key_tree' => 't',
 		);
 	}
@@ -25,13 +24,6 @@ class HotkeySearchConfig extends ModuleConfig {
 		$f->attr('size', 15);
 		$f->label = $this->_('Search');
 		$f->description = $this->_('Hot key to toggle scroll/focus to search.');
-		$inputfields->add($f);
-
-		$f = $modules->get('InputfieldText');
-		$f->attr('name', 'key_trigger');
-		$f->attr('size', 15);
-		$f->label = $this->_('Trigger result');
-		$f->description = $this->_('Hot key to trigger link of focused search result.');
 		$inputfields->add($f);
 
 		$f = $modules->get('InputfieldText');
