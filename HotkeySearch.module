@@ -2,7 +2,7 @@
 
 /**
  *
- * Hot Key Search
+ * Hotkey Search
  *
  * @author Robin Sallis
  *
@@ -24,7 +24,7 @@ class HotkeySearch extends WireData implements Module, ConfigurableModule {
 	 */
 	public static function getModuleInfo() {
 		return array(
-			'title' => 'Hot Key Search',
+			'title' => 'Hotkey Search',
 			'version' => 8,
 			'summary' => 'Adds configurable hot keys for easier use of the admin search via the keyboard.',
 			'singular' => true,
