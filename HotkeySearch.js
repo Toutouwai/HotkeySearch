@@ -1,8 +1,10 @@
-var hks_config = config.HotkeySearch;
-
 $(function() {
+	
+	// HotkeySearch config
+	var hks_config = typeof ProcessWire !== 'undefined' ? ProcessWire.config.HotkeySearch : config.HotkeySearch;
 
 	// Toggle scroll to top & search focus
+	var $search_input = hks_config.admin_theme === 'AdminThemeUikit' ? $('.pw-search-input') : $('#ProcessPageSearchQuery');
 	var current_position;
 	var jumped = false;
 	Mousetrap.bind(hks_config.key_search, function(e) {
@@ -10,7 +12,7 @@ $(function() {
 			current_position = $(document).scrollTop();
 			$(document).scrollTop(0);
 			e.preventDefault();
-			$('#ProcessPageSearchQuery').focus();
+			$search_input.focus();
 			jumped = true;
 		} else {
 			$(document).scrollTop(current_position);
