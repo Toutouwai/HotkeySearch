@@ -1,5 +1,5 @@
 $(function() {
-	
+
 	// HotkeySearch config
 	var hks_config = typeof ProcessWire !== 'undefined' ? ProcessWire.config.HotkeySearch : config.HotkeySearch;
 
