@@ -26,7 +26,7 @@ class HotkeySearch extends WireData implements Module, ConfigurableModule {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Hotkey Search',
-			'version' => '0.1.10',
+			'version' => '0.1.11',
 			'summary' => 'Adds configurable hot keys for easier use of the admin search via the keyboard.',
 			'author' => 'Robin Sallis',
 			'href' => 'https://github.com/Toutouwai/HotkeySearch',
@@ -49,6 +49,7 @@ class HotkeySearch extends WireData implements Module, ConfigurableModule {
 	 * Ready
 	 */
 	public function ready() {
+
 		// Add JS config to admin output
 		$settings = array();
 		$settings['key_search'] = $this->key_search;
@@ -56,8 +57,21 @@ class HotkeySearch extends WireData implements Module, ConfigurableModule {
 		$settings['key_tree'] = $this->key_tree;
 		$settings['admin_theme'] = $this->user->admin_theme ?: $this->config->defaultAdminTheme;
 		$this->wire()->config->js($this->className(), $settings);
-		// Hook to add scripts
+
+		// Hooks
 		$this->addHookAfter('ProcessController::execute', $this, 'addHksScripts');
+		$this->addHookAfter('AdminTheme::getExtraMarkup', $this, 'addExtraMarkup');
+	}
+
+	/**
+	 * Add extra admin markup: make quick tree available everywhere
+	 *
+	 * @param HookEvent $event
+	 */
+	protected function addExtraMarkup(HookEvent $event) {
+		$parts = $event->return;
+		$parts['footer'] .= "<a id='tree-panel-link' style='display:none' class='pw-panel' href='{$this->wire()->config->urls->admin}page/' data-tab-text='Tree' data-tab-icon='tree' title='Tree'></a>";
+		$event->return = $parts;
 	}
 
 	/**

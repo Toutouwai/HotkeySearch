@@ -21,10 +21,10 @@ $(function() {
 	});
 
 	// Toggle quick tree
-	var $tree_button = $("a[data-tab-text='Tree']");
+	var $tree_button = $('#tree-panel-link');
 	if($tree_button.length) {
 		Mousetrap.bind(hks_config.key_tree, function() {
-			$tree_button[0].click();
+			$tree_button.click();
 		});
 	}
 
